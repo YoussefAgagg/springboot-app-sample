@@ -8,5 +8,4 @@ public enum StaffPosition {
     MANAGER,
     INDIVIDUAL_CONTRIBUTOR,
     ENTRY_LEVEL
-
 }

@@ -32,7 +32,6 @@ public class Staff implements Serializable {
     @Column(nullable = false)
     private String name;
 
-
     @NotNull
     @Column(name = "phone", nullable = false)
     private String phone;
@@ -41,10 +40,8 @@ public class Staff implements Serializable {
     @Column(name = "email", nullable = false)
     private String email;
 
-
     @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
-
 
     @NotNull
     @Enumerated(EnumType.STRING)
@@ -53,8 +50,6 @@ public class Staff implements Serializable {
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
-
-
     @ManyToOne(optional = false)
     @NotNull
     private Department department;
