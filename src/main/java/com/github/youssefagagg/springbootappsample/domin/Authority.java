@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "AUTHORITY")
+@Table(name = "`authority`")
 @Getter
 @Setter
 @ToString

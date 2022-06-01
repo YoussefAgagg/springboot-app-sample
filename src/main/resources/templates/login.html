@@ -8,6 +8,7 @@
 </head>
 
 <body>
+<div class="bg-success text-white p-2" th:if="${param.logout}" th:text="#{login.logout.success}"></div>
 <div class="container text-center">
     <div>
         <h2>Please Login</h2>
@@ -37,6 +38,9 @@
             </div>
         </div>
     </form>
+    <p class="text-center text-muted mt-5 mb-0">Create new account? <a th:href="@{/account/register}"
+                                                                            class="fw-bold text-body"><u>sign up here sdf</u></a></p>
+
 </div>
 </body>
 </html>

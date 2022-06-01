@@ -1,6 +1,6 @@
 package com.github.youssefagagg.springbootappsample.services;
 
-import com.github.youssefagagg.springbootappsample.domin.USER;
+import com.github.youssefagagg.springbootappsample.domin.User;
 import com.github.youssefagagg.springbootappsample.exception.UserNotActivatedException;
 import com.github.youssefagagg.springbootappsample.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -42,7 +42,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
         return null;
     }
-    private org.springframework.security.core.userdetails.User createSpringSecurityUser( USER user) {
+    private org.springframework.security.core.userdetails.User createSpringSecurityUser( User user) {
         if (!user.isActivated()) {
             throw new UserNotActivatedException("User " + user.getUsername() + " was not activated");
         }

@@ -1,10 +1,23 @@
 spring:
+  thymeleaf:
+    cache: false
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ayhaga121097@gmail.com  #Replace this field with your Gmail username.
+    password: hbszwsosketcdabc           #Replace this field with your Gmail password/App password.
+    protocol: smtp
+    tls: true
+    properties.mail.smtp:
+      auth: true
+      starttls.enable: true
+      ssl.trust: smtp.gmail.com
   h2:
     console:
       enabled: true
       path: /h2
   datasource:
-    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=false
     username: sa
     password:
     driver-class-name: org.h2.Driver
@@ -16,4 +29,13 @@ spring:
     show-sql: true
     database-platform: org.hibernate.dialect.H2Dialect
 
-
+  devtools:
+    restart:
+      enabled=true:
+app:
+  baseUrl: http://127.0.0.1:8080
+logging:
+  level:
+    ROOT: Error
+    org.hibernate.SQL: DEBUG
+    com.github.youssefagagg.springbootappsample: DEBUG
