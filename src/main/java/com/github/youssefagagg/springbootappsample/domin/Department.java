@@ -34,9 +34,6 @@ public class Department implements Serializable {
     @Column(name = "code", nullable = false)
     private String code;
 
-    @Column(name = "building_no")
-    private String buildingNo;
-
     @OneToMany(mappedBy = "department" )
     @ToString.Exclude
     private Set<Staff> staff = new HashSet<>();

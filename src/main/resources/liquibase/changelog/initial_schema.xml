@@ -32,12 +32,7 @@
             <column name="reset_key" type="varchar()"/>
 
         </createTable>
-<!--        <addAutoIncrement-->
-<!--                columnDataType="bigint"-->
-<!--                columnName="id"-->
-<!--                incrementBy="1"-->
-<!--                startWith="1"-->
-<!--                tableName="user"/>-->
+
 
         <createTable tableName="authority">
             <column name="name" type="varchar(50)">

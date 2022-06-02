@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http:/www.thymeleaf.org">
+<th:block th:replace="common-template :: common-head(title='department')"/>
+
+<body>
+<nav th:replace="/common-template:: common-navbar"></nav>
+
+<div class="container ">
+    <a class="btn btn-primary" th:href="@{/entity/createDepartment}" role="button">create new department</a>
+
+    <table class="table">
+        <h2  class="float-left">department</h2>
+        <thead>
+        <tr>
+            <th >id</th>
+            <th>name</th>
+            <th>code</th>
+            <th>delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="department : ${departments}">
+            <td th:text="${department.id}" />
+            <td th:text="${department.name}" />
+            <td th:text="${department.code}" />
+
+            <td>
+                <form action="#" th:action="@{'/entity/deleteDepartment/{id}'(id=${department.id})}" th:method="delete" >
+                    <input type="hidden" name="_method" value="delete" />
+                    <button type="submit" class="btn btn-danger">delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

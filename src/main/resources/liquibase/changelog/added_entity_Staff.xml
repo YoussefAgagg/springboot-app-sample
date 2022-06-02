@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity Staff.
+    -->
+    <changeSet id="4" author="youssef agagg">
+        <createTable tableName="staff">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="phone" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="email" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="date_of_birth" type="date">
+                <constraints nullable="true" />
+            </column>
+            <column name="position" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="status" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="gender" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="department_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="5" author="youssef agagg">
+
+        <addForeignKeyConstraint baseColumnNames="department_id"
+                                 baseTableName="staff"
+                                 constraintName="fk_staff__department_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="department"/>
+
+    </changeSet>
+
+
+    <changeSet id="6" author="youssef agagg">
+        <loadData
+                  file="liquibase/data/staff.csv"
+                  separator=";"
+                  tableName="staff"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="name" type="string"/>
+            <column name="phone" type="string"/>
+            <column name="email" type="string"/>
+            <column name="date_of_birth" type="date"/>
+            <column name="position" type="string"/>
+            <column name="gender" type="string"/>
+            <column name="department_id" type="numeric"/>
+
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

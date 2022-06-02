@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http:/www.thymeleaf.org">
+<th:block th:replace="common-template :: common-head(title='staff')"/>
+
+<body>
+<nav th:replace="/common-template:: common-navbar"></nav>
+
+<div class="container ">
+    <a class="btn btn-primary" th:href="@{/entity/createStaff}" role="button">create new staff</a>
+
+    <table class="table">
+        <h2  class="float-left">staff</h2>
+        <thead>
+        <tr>
+            <th >id</th>
+            <th>name</th>
+            <th>phone</th>
+            <th>email</th>>
+            <th>position</th>
+            <th>department</th>
+            <th>delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="staff : ${staffs.content}">
+            <td th:text="${staff.id}" />
+            <td th:text="${staff.name}" />
+            <td th:text="${staff.phone}" />
+            <td th:text="${staff.email}" />
+            <td th:text="${staff.position}" />
+            <td th:text="${staff.department.name}" />
+            <td>
+                <form action="#" th:action="@{'/entity/deleteStaff/{id}'(id=${staff.id})}" th:method="delete" >
+                    <input type="hidden" name="_method" value="delete" />
+                    <button type="submit" class="btn btn-danger">delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div th:if="${staffs.totalPages > 0}" class="pagination"
+         th:each="pageNumber : ${pageNumbers}">
+        <a th:href="@{/entity/staff(size=${staffs.size}, page=${pageNumber})}"
+           th:text=${pageNumber}
+           th:class="${pageNumber==staffs.number + 1} ? active"></a>
+    </div>
+</div>
+</body>
+</html>

@@ -44,7 +44,7 @@ public class User implements Serializable {
     @NotBlank(message = "last name cannot be blank")
     @Column(name = "last_name", length = 50)
     private String lastName;
-    @JsonIgnore
+//    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name = "`user_authority`",

@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>home page</title>
-</head>
+<th:block th:replace="common-template :: common-head(title='home')"/>
 <body>
+<nav th:replace="/common-template:: common-navbar"></nav>
 <h1> welcome...</h1>
+<p class="text-center text-muted mt-5 mb-0">
+    <a th:href="@{/entity/staff}"
+       class="fw-bold text-body"><u>staff</u></a></p>
+<p class="text-center text-muted mt-5 mb-0">
+    <a th:href="@{/entity/department}"
+       class="fw-bold text-body"><u>department</u></a></p>
+
 </body>
 </html>

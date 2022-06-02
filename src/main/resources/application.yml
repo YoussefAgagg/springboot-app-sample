@@ -10,3 +10,8 @@ spring:
         implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
     liquibase:
       drop-first: true
+
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled=true:
