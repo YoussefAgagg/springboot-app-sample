@@ -1,4 +1,4 @@
-package com.github.youssefagagg.springbootappsample.controllers;
+package com.github.youssefagagg.springbootappsample.web.controller;
 
 import com.github.youssefagagg.springbootappsample.domin.Department;
 import com.github.youssefagagg.springbootappsample.domin.Staff;

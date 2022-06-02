@@ -1,22 +1,15 @@
-package com.github.youssefagagg.springbootappsample.controllers;
+package com.github.youssefagagg.springbootappsample.web.controller;
 
 import com.github.youssefagagg.springbootappsample.domin.Department;
-import com.github.youssefagagg.springbootappsample.domin.Department;
-import com.github.youssefagagg.springbootappsample.services.DepartmentService;
 import com.github.youssefagagg.springbootappsample.services.DepartmentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 @Controller
 @RequestMapping("/entity")

@@ -9,7 +9,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.List;
+import java.util.Optional;
+
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -21,8 +22,8 @@ public class StaffService {
         return staffRepository.findAll(pageable);
     }
 
-    public Staff findById(Long id) {
-       return staffRepository.findById(id).orElse(null);
+    public Optional<Staff> findById(Long id) {
+       return staffRepository.findById(id);
     }
 
     public Staff save(Staff staff) {
@@ -31,5 +32,9 @@ public class StaffService {
 
     public void delete(Long id) {
         staffRepository.deleteById(id);
+    }
+
+    public boolean existsById(Long id) {
+        return staffRepository.existsById(id);
     }
 }

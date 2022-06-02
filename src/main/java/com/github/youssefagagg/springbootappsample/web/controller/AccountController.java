@@ -1,4 +1,4 @@
-package com.github.youssefagagg.springbootappsample.controllers;
+package com.github.youssefagagg.springbootappsample.web.controller;
 
 import com.github.youssefagagg.springbootappsample.domin.User;
 import com.github.youssefagagg.springbootappsample.exception.AccountActivationException;

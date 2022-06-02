@@ -1,4 +1,4 @@
-package com.github.youssefagagg.springbootappsample.controllers;
+package com.github.youssefagagg.springbootappsample.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
