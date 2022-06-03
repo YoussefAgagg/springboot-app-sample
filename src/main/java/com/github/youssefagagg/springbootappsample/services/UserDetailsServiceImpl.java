@@ -1,7 +1,7 @@
 package com.github.youssefagagg.springbootappsample.services;
 
 import com.github.youssefagagg.springbootappsample.domin.User;
-import com.github.youssefagagg.springbootappsample.exception.UserNotActivatedException;
+import com.github.youssefagagg.springbootappsample.web.controller.exception.UserNotActivatedException;
 import com.github.youssefagagg.springbootappsample.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

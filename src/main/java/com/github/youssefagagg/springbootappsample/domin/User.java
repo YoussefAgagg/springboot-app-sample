@@ -22,6 +22,7 @@ import java.util.Set;
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
+    @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
     @NotBlank(message = "username cannot be blank")
     @Size(min = 4, max = 50, message="Username should be at least 4 and at most 50 character")
@@ -44,7 +45,6 @@ public class User implements Serializable {
     @NotBlank(message = "last name cannot be blank")
     @Column(name = "last_name", length = 50)
     private String lastName;
-//    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name = "`user_authority`",

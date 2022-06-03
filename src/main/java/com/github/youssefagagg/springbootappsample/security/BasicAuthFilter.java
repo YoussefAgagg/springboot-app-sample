@@ -8,11 +8,14 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.github.youssefagagg.springbootappsample.web.controller.exception.UserNotActivatedException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -33,9 +36,9 @@ public class BasicAuthFilter extends OncePerRequestFilter {
             @NonNull FilterChain chain)
             throws ServletException, IOException {
         log.debug(request.getRequestURI());
-
-        //Check for the requests that starts with /api
-        if (request.getRequestURI().startsWith("/api/")) {
+        try {
+            //Check for the requests that starts with /api
+            if (request.getRequestURI().startsWith("/api/")) {
                 //Fetch Credential from authorization header
                 String authorization = request.getHeader("Authorization");
                 String base64Credentials = authorization.substring("Basic".length()).trim();
@@ -48,7 +51,12 @@ public class BasicAuthFilter extends OncePerRequestFilter {
                 if(userDetails!=null&&passwordEncoder.matches(password,userDetails.getPassword()))
                     SecurityUtils.authenticateUser(request, userDetails);
 
+            }
+
+        }catch (UsernameNotFoundException | UserNotActivatedException ex){
+            log.warn("error: ",ex);
         }
+
         chain.doFilter(request, response);
 
     }

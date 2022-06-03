@@ -1,7 +1,8 @@
 package com.github.youssefagagg.springbootappsample.web.controller;
 
 import com.github.youssefagagg.springbootappsample.domin.User;
-import com.github.youssefagagg.springbootappsample.exception.AccountActivationException;
+import com.github.youssefagagg.springbootappsample.security.SecurityUtils;
+import com.github.youssefagagg.springbootappsample.web.controller.exception.AccountActivationException;
 import com.github.youssefagagg.springbootappsample.services.MailService;
 import com.github.youssefagagg.springbootappsample.services.UserService;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +23,7 @@ public class UserController {
 
     private final UserService userService;
     private final MailService mailService;
+
 
     @GetMapping("/register")
     public String register(Model model){

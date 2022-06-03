@@ -1,4 +1,4 @@
-package com.github.youssefagagg.springbootappsample.exception;
+package com.github.youssefagagg.springbootappsample.web.controller.exception;
 
 
 
