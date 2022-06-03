@@ -1,33 +1,29 @@
 package com.github.youssefagagg.springbootappsample.config;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint;
 
 @Configuration
-public class SecurityConfig {
-    @Bean
-    @Order(1)
-    public SecurityFilterChain httpBaiskWebSecurityConfig(HttpSecurity http) throws Exception {
-        http.csrf().disable();
-        http.antMatcher("/api/**")
-                .authorizeRequests()
-                .anyRequest()
-                .authenticated()
-                .and()
-                .httpBasic();
-        return http.build();
-
-    }
+@EnableWebSecurity
+@RequiredArgsConstructor
+public class FormLoginSecurityConfig {
 
     @Bean
-    @Order(2)
+
     public SecurityFilterChain formWebSecurityConfig(HttpSecurity http) throws Exception {
+
         http
                 .authorizeRequests()
+                .antMatchers("/login*").permitAll()
                 .mvcMatchers("/account/**").permitAll()
                 .mvcMatchers(HttpMethod.GET, "/entity/**").authenticated()
                 .mvcMatchers("/entity/**").hasRole("ADMIN")

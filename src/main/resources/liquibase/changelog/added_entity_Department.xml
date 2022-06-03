@@ -21,7 +21,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="3" author="jhipster" >
+    <changeSet id="3" author="youssef agagg" >
         <loadData
                   file="liquibase/data/department.csv"
                   separator=";"

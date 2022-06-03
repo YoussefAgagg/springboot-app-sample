@@ -1,5 +1,6 @@
 package com.github.youssefagagg.springbootappsample.domin;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.Hibernate;
 
@@ -34,6 +35,7 @@ public class Department implements Serializable {
     @Column(name = "code", nullable = false)
     private String code;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "department" )
     @ToString.Exclude
     private Set<Staff> staff = new HashSet<>();

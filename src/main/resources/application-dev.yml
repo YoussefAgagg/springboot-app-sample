@@ -4,8 +4,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: ayhaga121097@gmail.com  #Replace this field with your Gmail username.
-    password: hbszwsosketcdabc           #Replace this field with your Gmail password/App password.
+    username: ${EMAIL_USER_NAME}
+    password: ${EMAIL_PASSWORD}
     protocol: smtp
     tls: true
     properties.mail.smtp:
@@ -39,3 +39,6 @@ logging:
     ROOT: Error
     org.hibernate.SQL: DEBUG
     com.github.youssefagagg.springbootappsample: DEBUG
+email:
+  name: ${EMAIL_USER_NAME}
+

@@ -24,16 +24,7 @@ import java.util.List;
 @Slf4j
 public class DepartmentResource {
 
-
-    private static final String ENTITY_NAME = "department";
-
-    @Value("${jhipster.clientApp.name}")
-    private String applicationName;
-
     private final DepartmentService departmentService;
-
-
-
 
     @PostMapping("/department")
     public ResponseEntity<Department> createDepartment(@Valid @RequestBody Department department) throws URISyntaxException {

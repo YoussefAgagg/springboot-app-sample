@@ -19,11 +19,6 @@ import javax.mail.internet.MimeMessage;
 import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 
-/**
- * Service for sending emails.
- * <p>
- * We use the {@link Async} annotation to send emails asynchronously.
- */
 @Service
 @Slf4j
 public class MailService {
@@ -32,6 +27,8 @@ public class MailService {
     private static final String USER = "user";
     @Value("${app.baseUrl}")
     private   String baseUrl = "baseUrl";
+    @Value("email.name")
+    private   String emailFrom = "hah@gmail.com";
 
     private final JavaMailSender javaMailSender;
 
@@ -48,6 +45,7 @@ public class MailService {
 
     @Async
     public void sendEmail(String to, String subject, String content, boolean isMultipart, boolean isHtml) {
+       log.debug("emailfrom {}",emailFrom);
         log.debug(
             "Send email[multipart '{}' and html '{}'] to '{}' with subject '{}' and content={}",
             isMultipart,
@@ -62,12 +60,11 @@ public class MailService {
         try {
             MimeMessageHelper message = new MimeMessageHelper(mimeMessage, isMultipart, StandardCharsets.UTF_8.name());
             message.setTo(to);
-            message.setFrom("ayhaga121097@gmail.com");
+            message.setFrom(emailFrom);
             message.setSubject(subject);
             message.setText(content, isHtml);
             javaMailSender.send(mimeMessage);
             log.debug("Sent email to User '{}'", to);
-            System.out.println("send email hahhah");
         } catch (MailException | MessagingException e) {
             log.warn("Email could not be sent to user '{}'", to, e);
         }

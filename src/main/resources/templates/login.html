@@ -19,6 +19,9 @@
             <div th:if="${param.logout}">
                 <p class="bg-success text-white p-2">You have been logged out.</p>
             </div>
+            <div th:if="${param.activated}">
+                <p class="bg-success text-white p-2">Your account has been activated.</p>
+            </div>
             <div>
                 <p><input type="text" name="username" required class="form-control" placeholder="enter your email or usernaem" /></p>
             </div>

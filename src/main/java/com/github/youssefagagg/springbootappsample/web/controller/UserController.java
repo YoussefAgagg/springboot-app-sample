@@ -18,7 +18,7 @@ import java.util.Optional;
 @Slf4j
 @RequiredArgsConstructor
 @RequestMapping("/account")
-public class AccountController {
+public class UserController {
 
     private final UserService userService;
     private final MailService mailService;
@@ -54,6 +54,7 @@ public class AccountController {
         if (!user.isPresent()) {
             throw new AccountActivationException("No user was found for this activation key");
         }
-        return "your account has bean activated";
+        log.debug("activated user {}",user.get());
+        return "redirect:/login?activated";
     }
 }

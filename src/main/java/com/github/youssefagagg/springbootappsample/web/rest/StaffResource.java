@@ -7,24 +7,15 @@ import com.github.youssefagagg.springbootappsample.services.StaffService;
 import com.github.youssefagagg.springbootappsample.web.rest.exception.BadRequestAlertException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.tomcat.util.http.HeaderUtil;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
-
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+
 
 
 @RestController
@@ -33,16 +24,7 @@ import java.util.Optional;
 @Slf4j
 public class StaffResource {
 
-
-    private static final String ENTITY_NAME = "staff";
-
-    @Value("${jhipster.clientApp.name}")
-    private String applicationName;
-
     private final StaffService staffService;
-
-
-
 
     @PostMapping("/staff")
     public ResponseEntity<Staff> createStaff(@Valid @RequestBody Staff staff) throws URISyntaxException {
